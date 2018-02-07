@@ -1,0 +1,13 @@
+﻿  stdafx.cpp
+c:\users\laptop\source\repos\td-inf1010\tp1_1905682_1582075 (2018-02-01-12h40)\tp1_1905682_1582075\stdafx.cpp(5): fatal error C1083: Impossible d'ouvrir le fichier en-tête précompilé : 'Debug\TP1_1905682_1582075.pch' : No such file or directory
+  Rayon.cpp
+c:\users\laptop\source\repos\td-inf1010\tp1_1905682_1582075 (2018-02-01-12h40)\tp1_1905682_1582075\rayon.cpp(93): fatal error C1010: fin de fichier inattendue lors de la recherche d'un en-tête précompilé. N'auriez-vous pas oublié d'ajouter '#include "stdafx.h"' à votre source ?
+  Produit.cpp
+c:\users\laptop\source\repos\td-inf1010\tp1_1905682_1582075 (2018-02-01-12h40)\tp1_1905682_1582075\produit.cpp(51): fatal error C1010: fin de fichier inattendue lors de la recherche d'un en-tête précompilé. N'auriez-vous pas oublié d'ajouter '#include "stdafx.h"' à votre source ?
+  Panier.cpp
+c:\users\laptop\source\repos\td-inf1010\tp1_1905682_1582075 (2018-02-01-12h40)\tp1_1905682_1582075\panier.cpp(85): fatal error C1010: fin de fichier inattendue lors de la recherche d'un en-tête précompilé. N'auriez-vous pas oublié d'ajouter '#include "stdafx.h"' à votre source ?
+  Main.cpp
+c:\users\laptop\source\repos\td-inf1010\tp1_1905682_1582075 (2018-02-01-12h40)\tp1_1905682_1582075\main.cpp(14): fatal error C1083: Impossible d'ouvrir le fichier en-tête précompilé : 'Debug\TP1_1905682_1582075.pch' : No such file or directory
+  Client.cpp
+c:\users\laptop\source\repos\td-inf1010\tp1_1905682_1582075 (2018-02-01-12h40)\tp1_1905682_1582075\client.cpp(104): fatal error C1010: fin de fichier inattendue lors de la recherche d'un en-tête précompilé. N'auriez-vous pas oublié d'ajouter '#include "stdafx.h"' à votre source ?
+  Génération de code en cours...
