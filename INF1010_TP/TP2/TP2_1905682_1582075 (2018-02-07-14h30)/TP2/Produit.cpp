@@ -97,6 +97,7 @@ bool Produit::operator==(Produit const &produitCompare)
 //surcharge de l'opérateur >>
 istream& operator>>(istream i, const Produit& unProduit)
 {
+	//à vérifier!!
 	return i >> unProduit.modifierNom >> unProduit.obtenirReference >> unProduit.obtenirPrix;
 }
 
