@@ -17,9 +17,14 @@ using namespace std;
 
 /**
 *Répondez aux questions ici :
-* 1/
-* 2/
-* 3/
+* 1/L'opérateur = et le constructeur par copie vont créer une "deep copie" de l'objet, ce qui signifie qu'un nouvel objet identique à l'initial sera créer avec les mêmes méthodes et attributs.
+	On appelle cela un "deep copie" car, de nouvelles copies des objets utilisés en attribut sont aussi dubliqués, ce qui signifie que chaque objet auront leurs propres attributs au lieu 
+	de partager les mêmes, ce qui serait un "shalow copie"
+* 2/ Il est absolument nécessaire de les implanter dans la situation où une agregation à lieu. Supposons qu'on a un objet voiture qui possede des objets roues en attributs, si on veut copier la voiture,
+	on veut que cette nouvelle voiture ait ses propres roues et non les roues de la voiture d'origine.
+* 3/ Le constructeur par copie va créer une copie de l'objet à partir de rien. En d'autres mots, il va construire un nouvelle objet avec les même méthodes et attributs que l'objet copié. Pour l'opérateur =,
+	il va plutot prendre un objet existant et va écraser les anciennes méthodes et attributs par ceux qui lui seront passé par l'objet copié. De plus, dans la situation où l'objet à gauche de l'opérateur =
+	n'existerait pas encore, le constructeur par copie serait automatiquement appelé.
 **/
 
 int main()
@@ -102,4 +107,8 @@ int main()
 	// Afichez le produit le plus cher du panier de martine
 	martine.obtenirPanier()->trouverProduitPlusCher();
 	// Terminer le programme correctement
+	for (int i = 0; i < NB_PRODUCTS; i++)
+	{
+		delete produits[i];
+	}
 }
