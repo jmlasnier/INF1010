@@ -22,7 +22,7 @@ vector <Produit *>  Panier::obtenirContenuPanier()const
 
 int Panier::obtenirNombreContenu() const
 {
-	return contenuPanier_.size;
+	return contenuPanier_.size();
 }
 
 
@@ -54,11 +54,12 @@ void Panier::livrer()
 Produit * Panier::trouverProduitPlusCher()
 {
 	Produit* prod = nullptr;
-	int nbProd = obtenirNombreContenu()¸;
+	int nbProd = obtenirNombreContenu();
 
 	if (nbProd != 0)
 	{
-		for (int i = 0; i < nbProd; i++)
+		prod = contenuPanier_[0];
+		for (int i = 1; i < nbProd; i++)
 		{
 			if (*contenuPanier_[i] > *prod)
 				prod = contenuPanier_[i];
@@ -71,5 +72,11 @@ Produit * Panier::trouverProduitPlusCher()
 	
 ostream& operator<<(ostream& os, Panier& panier)
 {
-	return os << panier.obtenirContenuPanier << "/" << panier.obtenirTotalApayer << endl;
+	for (int i = 0; i < panier.obtenirNombreContenu(); i++)
+	{
+		os << *panier.obtenirContenuPanier()[i] << endl;
+	}
+	os << panier.obtenirTotalApayer() << endl;
+	
+	return os;
 }

@@ -21,7 +21,7 @@ string Rayon::obtenirCategorie() const
 	return categorie_;
 }
 
-vector <Produit *> Rayon::obtenirTousProduits() const
+vector<Produit*> Rayon::obtenirTousProduits() const
 {
 	return tousProduits_;
 }
@@ -43,9 +43,9 @@ void Rayon::modifierCategorie(const string& cat)
 }
 
 //ajouterProduit avec la surcharge d'operateur +=
- Rayon& Rayon::operator+=(Produit const& produit)
+ Rayon& Rayon::operator+=(Produit& produit)
 {
-	obtenirTousProduits().push_back(produit);
+	 tousProduits_.push_back(&produit);
 	return *this;
 }
 
@@ -53,7 +53,7 @@ void Rayon::modifierCategorie(const string& cat)
 //Methode de modification compterDoublons
 int Rayon::compterDoublons(const Produit& produit)
 {
-	int doublons;
+	int doublons = 0;
 	for (int i = 0; i < obtenirNombreProduits(); i++)
 	{
 		if (*tousProduits_[i] == produit)
@@ -66,5 +66,10 @@ int Rayon::compterDoublons(const Produit& produit)
 //Surcharge de l'operateur <<
 ostream& operator<<(ostream& os, Rayon& rayon)
 {
-	return os << rayon.obtenirCategorie << "/" << rayon.obtenirTousProduits <<  endl;
+	os << rayon.obtenirCategorie() << endl;
+	for (int i = 0; i < rayon.obtenirNombreProduits() ; i++)
+		{
+			 os << *rayon.obtenirTousProduits()[i] << endl;
+		}
+	return os;
 }

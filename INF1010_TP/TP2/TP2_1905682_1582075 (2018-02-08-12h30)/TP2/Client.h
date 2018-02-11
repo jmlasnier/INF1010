@@ -17,8 +17,10 @@ class Client
 public:
 	Client(const string&  nom, const string& prenom, int identifiant, const string& codePostal, long date);
 	~Client();
-
+	
 	// TODO: Ajouter un constructeur par copie si necessaire
+
+	Client(Client const& copie);
 
 	string obtenirNom() const;
 	string obtenirPrenom() const;
@@ -38,11 +40,17 @@ public:
 	void livrerPanier();
 
 	// TODO: Surcharger l'operateur d'affectation =
-	// TODO: Surcharger l'operateur == (client == identifiant)
+	Client& operator=(const Client& client);
 
+	// TODO: Surcharger l'operateur == (client == identifiant)
+	bool operator==(int const identifiant);
+	
 	// TODO: Surcharger l'operateur == (identifiant == client)
+	friend bool operator==(int identifiant,const Client& client);
+
 	// TODO: Cette methode doit être remplacée par la surcharge de l'opérateur <<
-	void afficherPanier() const;
+	friend ostream& operator<<(ostream& os,const Client& client);
+	
 
 private:
 	string nom_;

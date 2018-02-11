@@ -55,23 +55,13 @@ void Produit::modifierPrix(double prix)
 //Surcharge de l'opérateur >
 bool Produit::operator>(Produit const &produitCompare)
 {
-	if (prix_ > produitCompare.prix_)
-	{
-		return true;
-	}
-	else
-		return false;;
+	return (prix_ > produitCompare.prix_);
 }
 
 //Surcharge de l'opérateur <
 bool Produit::operator<(Produit const &produitCompare)
 {
-	if (prix_ < produitCompare.prix_)
-	{
-		return true;
-	}
-	else
-		return false;
+	return (prix_ < produitCompare.prix_);
 }
 
 //Surcharge de l'opérateur ==
@@ -91,5 +81,5 @@ istream & operator >> (istream & is, Produit & produit)
 //Surcharge de l'opérateur <<
 ostream& operator<<(ostream& os, Produit& produit)
 {
-	return os << produit.obtenirNom << "/" << produit.obtenirReference << "/" << produit.obtenirPrix << endl;
+	return os << produit.obtenirNom() << "/" << produit.obtenirReference() << "/" << produit.obtenirPrix() << endl;
 }

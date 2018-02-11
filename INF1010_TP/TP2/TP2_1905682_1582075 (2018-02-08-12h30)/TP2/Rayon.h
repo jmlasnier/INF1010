@@ -29,14 +29,14 @@ public:
 	// TODO: Cette methode doit etre remplacee par la surchage de l'operateur +=
 	/*void ajouterProduit(Produit * produit);*/
 
-	Rayon& operator+=(const Produit& produit);
+	Rayon& operator+=(Produit& produit);
 
 
 	// TODO: Implermenter la methode compterDoublons
 	int compterDoublons(const Produit& produit);
 
 	// TODO: Cette methode doit être remplacee par la surcharge de l'opérateur <<
-	friend ostream& operator<<(ostream& os, Produit& rayon);
+	friend ostream& operator<<(ostream& os, Rayon& rayon);
 	
 
 private:
@@ -44,7 +44,7 @@ private:
 
 	// TODO: Remplacer ces attributs par un vecteur de la STL
 	vector <Produit *> tousProduits_;
-/*	int capaciteProduits_;				//Encore beson de ces deux?????
+/*	int capaciteProduits_;				//a enlever
 	int nombreProduits_;*/
 
 };
