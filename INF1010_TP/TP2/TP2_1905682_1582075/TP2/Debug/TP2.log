@@ -1,0 +1,8 @@
+﻿  main.cpp
+  Rayon.cpp
+  Produit.cpp
+  Panier.cpp
+  Client.cpp
+c:\users\laptop\source\repos\inf1010sol\inf1010_tp\tp2\tp2_1905682_1582075 (2018-02-08-12h30)\tp2\client.cpp(131): warning C4018: '<' : incompatibilité signed/unsigned
+  Génération de code en cours...
+  TP2.vcxproj -> C:\Users\Laptop\source\repos\INF1010Sol\INF1010_TP\TP2\TP2_1905682_1582075 (2018-02-08-12h30)\Debug\TP2.exe
