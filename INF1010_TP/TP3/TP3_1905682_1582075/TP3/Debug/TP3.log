@@ -1,0 +1,7 @@
+﻿  main.cpp
+c:\users\laptop\source\repos\inf1010sol\inf1010_tp\tp3\tp3_1905682_1582075\tp3\main.cpp(37): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+  Génération de code en cours...
+  Ignoré... (aucune modification pertinente détectée)
+  Panier.cpp
+  Client.cpp
+  TP3.vcxproj -> C:\Users\Laptop\source\repos\INF1010Sol\INF1010_TP\TP3\TP3_1905682_1582075\Debug\TP3.exe
