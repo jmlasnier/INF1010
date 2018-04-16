@@ -68,6 +68,7 @@ private:
 
     QPushButton* boutonAjouter;
     QPushButton* boutonSupprimer;
+    QPushButton* boutonAjouterUsager;
 };
 
 #endif // MAINWINDOW_H
