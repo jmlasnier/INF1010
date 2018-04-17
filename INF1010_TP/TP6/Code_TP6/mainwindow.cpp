@@ -142,7 +142,7 @@ void MainWindow::setUI() {
     QLabel* identifiantLabel = new QLabel;
     identifiantLabel->setText("Identifiant:");
     editeurIdentifiant = new QLineEdit;
-    QValidator *validatorIdentifiant = new QIntValidator(0,100000,this);
+    QValidator *validatorIdentifiant = new QIntValidator(0,100000,editeurIdentifiant);
     editeurIdentifiant->setValidator(validatorIdentifiant);   //Variable magique...to review
 
 
@@ -166,8 +166,8 @@ void MainWindow::setUI() {
     QLabel* joursRestantsLabel = new QLabel;
     joursRestantsLabel->setText("Jours Restants:");
     editeurJoursRestants = new QLineEdit;
-    QValidator *validatorJoursRestants = new QIntValidator(0,1000,this);
-    editeurIdentifiant->setValidator(validatorJoursRestants);
+    QValidator *validatorJoursRestants = new QIntValidator(0,1000,editeurJoursRestants);
+    editeurJoursRestants->setValidator(validatorJoursRestants);
 
     QHBoxLayout* joursRestantsLayout = new QHBoxLayout;
     joursRestantsLayout->addWidget(joursRestantsLabel);
@@ -441,27 +441,84 @@ void MainWindow::ajouterUsager() {
 
     //Utilisation d'un try throw catch pour faire un popup message si tous les champs ne sont pas remplis
     /*...*/
+    try {
+        if (editeurNom->text() == ""){
+            throw ExceptionArgumentInvalide("Erreur: le champs nom est invalide");
+        }
+        else if (editeurPrenom->text() == ""){
+            throw ExceptionArgumentInvalide("Erreur: le champs Prenom est invalide");
+        }
+        else if (editeurIdentifiant->text() == ""){
+            throw ExceptionArgumentInvalide("Erreur: le champs Identifiant est invalide");
+        }
+        else if (editeurCodePostal->text() == ""){
+            throw ExceptionArgumentInvalide("Erreur: le champs CodePostal est invalide");
+        }
+        else if (editeurJoursRestants->text() == ""){
+            throw ExceptionArgumentInvalide("Erreur: le champs JoursRestants est invalide");
+        }
+    }
 
+    catch(ExceptionArgumentInvalide e){
+        afficherMessage(e.what());
+        return;
+    }
     //On trouve le bon type d'usager selon le bouton radio sélectionné
     /*...*/
+    QRadioButton* selectedType = 0;
+    list<QRadioButton*>::iterator end = boutonRadioTypeUsager.end();
+    for (auto it = boutonRadioTypeUsager.begin(); it != end; it++) {
+        if ((*it)->isChecked()) {
+            selectedType = *it;
+            break;
+        }
+    }
 
     // On créé le bon type d'usager selon le cas
+
     /*...*/
+    if (selectedType->text().endsWith("ClientPremium")){
+        nouvelUsager = new ClientPremium(  editeurNom->text().toStdString(),
+                                        editeurPrenom->text().toStdString(),
+                                        editeurIdentifiant->text().toDouble(),
+                                        editeurCodePostal->text().toStdString(),
+                                        editeurJoursRestants->text().toDouble());
+    }   else if (selectedType->text().endsWith("Client")){
+        nouvelUsager = new Client( editeurNom->text().toStdString(),
+                                editeurPrenom->text().toStdString(),
+                                editeurIdentifiant->text().toDouble(),
+                                editeurCodePostal->text().toStdString());
+    }   else {
+        nouvelUsager = new Fournisseur( editeurNom->text().toStdString(),
+                                        editeurPrenom->text().toStdString(),
+                                        editeurIdentifiant->text().toDouble(),
+                                        editeurCodePostal->text().toStdString());
+    }
+
 
     //Vérification que tous les champs ont été complétés
     /*...*/
 
     // On ajoute le nouvel usager créé au gestionnaire
     /*...*/
+    gestionnaire_->ajouterUsager(nouvelUsager);
 
     // Mais on le stocke aussi localement dans l'attribut ajoute_ pour pouvoir le supprimer plus tard
     /*...*/
+    ajoute_.push_back(nouvelUsager);
+
 }
 
 //Mise à jour de la vue après l'ajout d'un usager
 void MainWindow::usagerAEteAjoute(Usager* u) {
     /*À Faire*/
+    QListWidgetItem* item = new QListWidgetItem(
+        QString::fromStdString(u->obtenirNom() + ", " + u->obtenirPrenom()), listUsager);
+    item->setData(Qt::UserRole, QVariant::fromValue<Usager*>(u));
+
+    item->setHidden(filtrerMasque(u));
 }
+
 
 //Mise à jour de la vue après la suppression d'un usager
 void MainWindow::usagerAEteSupprime(Usager* u) {
